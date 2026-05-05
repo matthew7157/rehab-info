@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: rehab-info
+    env: node
+    region: singapore
+    buildCommand: npm install
+    startCommand: node src/web.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22
