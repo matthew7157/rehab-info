@@ -1,0 +1,19 @@
+{
+  "name": "rehab-collector",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js",
+    "schedule": "node src/scheduler.js",
+    "web": "node src/web.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "iconv-lite": "^0.6.3",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^8.0.7",
+    "xlsx": "^0.18.5"
+  }
+}
