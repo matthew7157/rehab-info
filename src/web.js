@@ -2,9 +2,9 @@ import express from 'express';
 import { initDb, getAllCompanies } from './db/database.js';
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
-initDb();
+try { initDb(); } catch { /* Vercel 읽기전용 파일시스템에서 DB 초기화 생략 */ }
 
 app.get('/', (_req, res) => {
   res.send(`<!DOCTYPE html>
@@ -102,6 +102,10 @@ app.get('/api/companies', (_req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`기업회생정보 대시보드: http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`기업회생정보 대시보드: http://localhost:${PORT}`);
+  });
+}
+
+export default app;
